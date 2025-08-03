@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanvi S Nikkam | Student</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/scrollreveal"></script>
+    <style>
+        :root {
+            --primary-color: #a6c8e7;
+            --secondary-color: #7ba7cc;
+            --accent-color: #5a87a8;
+            --light-color: #e8f4ff;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --bg-color: #f8fafc;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--bg-color);
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .section {
+            padding: 5rem 0;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .content-container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .section-title:hover::after {
+            width: 100%;
+        }
+        
+        .card {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .btn:hover::before {
+            width: 100%;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background-color: var(--primary-color);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 2.5rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--secondary-color);
+            border: 2px solid var(--light-color);
+        }
+        
+        .timeline-item:last-child {
+            padding-bottom: 0;
+        }
+        
+        .skill-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: var(--light-color);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .skill-progress {
+            height: 100%;
+            border-radius: 4px;
+            background-color: var(--secondary-color);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            transition: width 1.5s ease;
+        }
+        
+        .nav-link {
+            position: relative;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .project-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+        
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.1) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .project-card:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .project-card:hover .project-icon {
+            transform: scale(1.1);
+        }
+        
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(122, 167, 204, 0.5);
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background-color 0.3s ease;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid var(--secondary-color);
+            pointer-events: none;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+        }
+        
+        .expand {
+            width: 50px;
+            height: 50px;
+            background-color: rgba(122, 167, 204, 0.2);
+        }
+        
+        .nav-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 3px;
+            background-color: var(--accent-color);
+            z-index: 9999;
+            transition: width 0.1s ease;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+        
+        .back-to-top.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .loader {
+            width: 60px;
+            height: 60px;
+            border: 5px solid var(--light-color);
+            border-top: 5px solid var(--accent-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+        .about-visual {
+            background-color: var(--primary-color);
+            opacity: 0.2;
+            border-radius: 12px;
+            padding: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+                position: fixed;
+                top: 1rem;
+                right: 1rem;
+            }
+            
+            .navbar {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 80%;
+                height: 100vh;
+                background-color: var(--bg-color);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: right 0.3s ease;
+                z-index: 999;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+            
+            .navbar.active {
+                right: 0;
+            }
+            
+            .nav-link {
+                margin: 1rem 0;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loader -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+    </div>
+    
+    <!-- Custom Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Navigation Progress Bar -->
+    <div class="nav-progress"></div>
+    
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+    
+    <!-- Header -->
+    <header class="fixed top-0 left-0 w-full bg-white/90 backdrop-blur-sm z-50 shadow-sm">
+        <div class="content-container flex justify-between items-center py-4">
+            <a href="#home" class="text-2xl font-bold text-gray-800">
+                <span class="text-[var(--accent-color)]">Sanvi S Nikkam</span>
+            </a>
+            
+            <button class="mobile-nav-toggle">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+            
+            <nav class="navbar flex space-x-6">
+                <a href="#home" class="nav-link active">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#education" class="nav-link">Education</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </nav>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section id="home" class="section bg-gradient-to-br from-[var(--light-color)] to-white">
+        <div class="content-container">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <h1 class="text-5xl md:text-6xl font-bold mb-4">
+                        <span class="block">Hello, I'm</span>
+                        <span class="text-[var(--accent-color)]">Sanvi S Nikkam</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl mb-8 text-gray-600">Information Science Engineering student</p>
+                    <div class="flex space-x-4">
+                        <a href="#contact" class="btn bg-[var(--accent-color)] text-white">Get In Touch</a>
+                        <a href="#projects" class="btn border-2 border-[var(--accent-color)] text-[var(--accent-color)]">View Projects</a>
+                    </div>
+                    <div class="flex space-x-4 mt-8">
+                        <a href="mailto:sanvi.nikkam@gmail.com" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
+                            <i class="fas fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://linkedin.com" target="_blank" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
+                            <i class="fab fa-linkedin text-xl"></i>
+                        </a>
+                        <a href="https://github.com" target="_blank" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="tel:+917022838792" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
+                            <i class="fas fa-phone text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="w-64 h-64 md:w-80 md:h-80 rounded-full bg-[var(--primary-color)] flex items-center justify-center overflow-hidden relative">
+                            <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg" class="absolute w-full h-full">
+                                <path fill="var(--secondary-color)" d="M48.8,-57.2C62.9,-48.3,73.9,-33.1,76.8,-16.5C79.8,0.1,74.8,18.1,65.8,32.9C56.8,47.7,43.7,59.3,28.7,65.9C13.6,72.5,-3.4,74.1,-20.8,70.3C-38.2,66.5,-56,57.3,-67.1,42.5C-78.2,27.7,-82.5,7.3,-77.9,-10.2C-73.3,-27.7,-59.8,-42.3,-44.7,-51.1C-29.6,-59.9,-12.9,-62.9,2.4,-65.7C17.7,-68.5,34.7,-66.1,48.8,-57.2Z" transform="translate(100 100)" />
+                            </svg>
+                            <div class="relative z-10 text-center">
+                                <div class="w-40 h-40 md:w-48 md:h-48 rounded-full overflow-hidden relative">
+                                    <img src="profile.png" alt="Profile" class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[200%] h-[200%] object-cover" />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-[var(--secondary-color)] rounded-full flex items-center justify-center text-white text-4xl">
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="content-container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">About Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <p class="text-lg leading-relaxed mb-6">
+                        I’m Sanvi Nikkam, a third-year Information Science student at Ramaiah Institute of Technology, driven to build products that are intuitive, impactful, and user-first. From backend systems to product strategy and UI/UX, I bring a blend of curiosity, empathy, and data-driven thinking.
+
+I’ve built full-stack features at NFThing, designed from scratch at Teslabird, and led automation projects grounded in real-world research. I’ve placed 1st at GamesForGeeks, 4th at Hack with Humanity, and 2nd in the National Science Olympiad—proving I thrive in fast-paced, problem-solving environments.
+
+Years of competitive swimming, dance, and work with U&I and NSS have shaped my discipline and people-first mindset. Whether as an SDE, Product, UI/UX, or Analyst intern—I bring clarity, creativity, and heart to everything I build.
+                    </p>
+                    <p class="text-lg leading-relaxed mb-6">
+                        My approach to design is user-centered, data-driven, and detail-oriented. I believe in the power of thoughtful design to solve complex problems and create meaningful connections between people and technology.
+                    </p>
+                    <div class="flex flex-wrap gap-3 mt-8">
+                        <span class="px-4 py-2 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">UI/UX Design</span>
+                        <span class="px-4 py-2 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Product Design</span>
+                        <span class="px-4 py-2 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Figma</span>
+                        <span class="px-4 py-2 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Web Development</span>
+                        <span class="px-4 py-2 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Research</span>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center">
+                    
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="text-4xl mb-2">🎨</div>
+                                <h3 class="font-semibold mb-1">Design Thinking</h3>
+                                <p class="text-sm text-gray-600">User-centered approach to problem-solving</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="text-4xl mb-2">🔍</div>
+                                <h3 class="font-semibold mb-1">Research</h3>
+                                <p class="text-sm text-gray-600">Data-driven design decisions</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="text-4xl mb-2">💡</div>
+                                <h3 class="font-semibold mb-1">Innovation</h3>
+                                <p class="text-sm text-gray-600">Creative solutions to complex problems</p>
+                            </div>
+                            <div class="bg-white rounded-lg p-4 shadow-sm">
+                                <div class="text-4xl mb-2">🚀</div>
+                                <h3 class="font-semibold mb-1">Execution</h3>
+                                <p class="text-sm text-gray-600">Bringing ideas to life</p>
+                            </div>
+                        </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Education Section -->
+    <section id="education" class="section bg-[var(--light-color)]/30">
+        <div class="content-container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Education</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="card bg-white p-6">
+                        <h3 class="text-xl font-semibold mb-2">BE in Information Science Engineering</h3>
+                        <p class="text-[var(--accent-color)] font-medium mb-4">Ramaiah Institute of Technology, Bengaluru</p>
+                        <p class="text-gray-600">Pursuing a comprehensive education in Information Science, focusing on both technical skills and design principles.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="card bg-white p-6">
+                        <h3 class="text-xl font-semibold mb-2">12th Grade</h3>
+                        <p class="text-[var(--accent-color)] font-medium mb-4">Mount Carmel College, Bengaluru</p>
+                        <p class="text-gray-600">Completed higher secondary education with a strong foundation in science and mathematics.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="content-container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="card bg-white p-6">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold">NFThing+dwell | UI/UX Intern</h3>
+                            <span class="text-sm text-[var(--accent-color)] font-medium">Jan 2024 - Feb 2025</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Built the "2-Minute Recommendation" feature with responsive UI, dynamic filters (mood, genre, language), and personalised results for web and mobile.</li>
+                            <li>Collaborated across frontend, backend, and design teams to ensure smooth feature rollouts and personalized user experiences.</li>
+                            <li>Retrieved movie details by integrating local storage and developing APIs, resulting in a 30% reduction in API request latency.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="card bg-white p-6">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold">TeslaBird | UI/UX Intern</h3>
+                            <span class="text-sm text-[var(--accent-color)] font-medium">Apr 2025 - Jun 2025</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Spearheaded end-to-end UI/UX design of Teslabird's homepage and core content pages using Figma, optimizing for clarity, visual hierarchy, and brand alignment.</li>
+                            <li>Enhanced user engagement by implementing intuitive animations and micro-interactions, delivering a polished and dynamic user experience.</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="card bg-white p-6">
+                        <div class="flex flex-wrap justify-between items-start mb-4">
+                            <h3 class="text-xl font-semibold">Ramaiah Institute of Technology | Research Intern</h3>
+                            <span class="text-sm text-[var(--accent-color)] font-medium">Oct 2024 - Present</span>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2 text-gray-700">
+                            <li>Published a research paper titled "Revolutionizing Legal Case Analysis through Advanced Event Extraction."</li>
+                            <li>Applied NLP and data extraction techniques to automate legal case analysis and structure unformatted judicial documents.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Projects Section -->
+    <section id="projects" class="section bg-[var(--light-color)]/30">
+        <div class="content-container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Projects</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
+                <!-- Project 1 -->
+                <div class="project-card card bg-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="project-icon">
+                            <i class="fas fa-gavel text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">NammaNotice</h3>
+                        <p class="text-gray-600 mb-4">Legal notice generator using AI and language processing</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Flask</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">LLM</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">API</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">PDF</span>
+                        </div>
+                        <p class="text-gray-700">Designed a full-stack legal notice generator by building a Flask-based pipeline that leverages LLMs and a translation API to extract, translate and convert Nudi-encoded Kannada land records from Excel files into unicoded, legally formatted, downloadable PDF notices.</p>
+                        <button class="mt-4 btn bg-[var(--accent-color)] text-white" onclick="showProjectDetails('namma')">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="project-card card bg-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="project-icon">
+                            <i class="fas fa-seedling text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">AI-Powered Crop Recommendation</h3>
+                        <p class="text-gray-600 mb-4">Smart agricultural decision support system</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Streamlit</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Machine Learning</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">API</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Data Visualization</span>
+                        </div>
+                        <p class="text-gray-700">A Streamlit-based crop recommendation system using an ensemble of Random Forest, KNN, and SVM, enhanced with PCA for dimensionality reduction and real-time weather data taken via OpenWeatherMap API.</p>
+                        <button class="mt-4 btn bg-[var(--accent-color)] text-white" onclick="showProjectDetails('crop')">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="project-card card bg-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="project-icon">
+                            <i class="fas fa-code text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">DSA Master</h3>
+                        <p class="text-gray-600 mb-4">Interactive learning platform for data structures and algorithms</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">React</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">MongoDB</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">JavaScript</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Netlify</span>
+                        </div>
+                        <p class="text-gray-700">Created an educational platform for learning and solving DSA problems deployed on Netlify using MongoDB, React, JavaScript, HTML, and CSS, incorporating interactive, fun visuals and quizzes to boost user engagement.</p>
+                        <button class="mt-4 btn bg-[var(--accent-color)] text-white" onclick="showProjectDetails('dsa')">View Details</button>
+                    </div>
+                </div>
+                
+                <!-- Project 4 -->
+                <div class="project-card card bg-white overflow-hidden">
+                    <div class="p-6">
+                        <div class="project-icon">
+                            <i class="fas fa-universal-access text-white text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Inclusus</h3>
+                        <p class="text-gray-600 mb-4">Accessible job platform for individuals with disabilities</p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Accessibility</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">ARIA</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">AI</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Inclusive Design</span>
+                        </div>
+                        <p class="text-gray-700">Developed an inclusive job platform adhering to ARIA accessibility standards, enabling individuals with disabilities and marginalized communities to discover suitable job opportunities.</p>
+                        <button class="mt-4 btn bg-[var(--accent-color)] text-white" onclick="showProjectDetails('inclusus')">View Details</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Project Modal -->
+        <div id="projectModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden">
+            <div class="bg-white rounded-lg w-full max-w-3xl max-h-[90vh] overflow-y-auto">
+                <div class="p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 id="modalTitle" class="text-2xl font-bold"></h3>
+                        <button onclick="closeProjectModal()" class="text-gray-500 hover:text-gray-700">
+                            <i class="fas fa-times text-xl"></i>
+                        </button>
+                    </div>
+                    <div id="modalContent"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="content-container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Skills</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Technical Skills</h3>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">HTML/CSS</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">JavaScript</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Python</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">SQL</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">MongoDB</span>
+                            <span>70%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="70%"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-6">Design Skills</h3>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">UI/UX Design</span>
+                            <span>95%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="95%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Figma</span>
+                            <span>90%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="90%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Wireframing</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="85%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">Prototyping</span>
+                            <span>80%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="80%"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="mb-4">
+                        <div class="flex justify-between mb-1">
+                            <span class="font-medium">User Research</span>
+                            <span>75%</span>
+                        </div>
+                        <div class="skill-bar">
+                            <div class="skill-progress" data-width="75%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-[var(--light-color)]/30">
+        <div class="content-container">
+            <h2 class="section-title text-3xl md:text-4xl font-bold">Contact Me</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                <div>
+                    <p class="text-lg mb-6">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-[var(--primary-color)] flex items-center justify-center mr-4">
+                                <i class="fas fa-envelope text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Email</h3>
+                                <a href="mailto:sanvi.nikkam@gmail.com" class="text-[var(--accent-color)] hover:underline">sanvi.nikkam@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-[var(--primary-color)] flex items-center justify-center mr-4">
+                                <i class="fas fa-phone text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">Phone</h3>
+                                <a href="tel:+917022838792" class="text-[var(--accent-color)] hover:underline">+91 7022838792</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-[var(--primary-color)] flex items-center justify-center mr-4">
+                                <i class="fab fa-linkedin text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">LinkedIn</h3>
+                                <a href="https://linkedin.com" target="_blank" class="text-[var(--accent-color)] hover:underline">LinkedIn Profile</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 rounded-full bg-[var(--primary-color)] flex items-center justify-center mr-4">
+                                <i class="fab fa-github text-white"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-medium">GitHub</h3>
+                                <a href="https://github.com" target="_blank" class="text-[var(--accent-color)] hover:underline">GitHub Profile</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <form id="contactForm" class="card bg-white p-6">
+                        <div class="mb-4">
+                            <label for="name" class="block text-gray-700 mb-2">Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" placeholder="Your Name">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="email" class="block text-gray-700 mb-2">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" placeholder="Your Email">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="subject" class="block text-gray-700 mb-2">Subject</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" placeholder="Subject">
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="message" class="block text-gray-700 mb-2">Message</label>
+                            <textarea id="message" rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--accent-color)]" placeholder="Your Message"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full btn bg-[var(--accent-color)] text-white">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-[var(--dark-color)] text-white py-10">
+        <div class="content-container">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h2 class="text-2xl font-bold mb-2">Sanvi S Nikkam</h2>
+                    <p class="text-gray-300">Product Designer & UI/UX Specialist</p>
+                </div>
+                
+                <div class="flex space-x-4">
+                    <a href="mailto:sanvi.nikkam@gmail.com" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="tel:+917022838792" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
+                        <i class="fas fa-phone"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 mt-8 pt-8 text-center">
+                <p class="text-gray-400">&copy; 2024 Sanvi S Nikkam. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Project details data
+        const projectDetails = {
+            namma: {
+                title: "NammaNotice",
+                content: `
+                    <div class="space-y-4">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='200' viewBox='0 0 800 200'%3E%3Crect fill='%23a6c8e7' width='800' height='200'/%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='400' cy='100' r='50'/%3E%3Ccircle cx='500' cy='100' r='30'/%3E%3Ccircle cx='300' cy='100' r='30'/%3E%3C/g%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%23ffffff'%3ENammaNotice%3C/text%3E%3C/svg%3E" alt="NammaNotice" class="w-full h-48 object-cover rounded-lg mb-4">
+                        
+                        <h4 class="text-xl font-semibold">Project Overview</h4>
+                        <p>NammaNotice is a full-stack legal notice generator that transforms complex Kannada land records into formatted legal notices. The system uses advanced language processing to make legal documentation more accessible.</p>
+                        
+                        <h4 class="text-xl font-semibold">Technologies Used</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Flask</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">LLM</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Translation API</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">PDF Generation</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Excel Processing</span>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold">Key Features</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Automated extraction of data from Nudi-encoded Kannada land records</li>
+                            <li>Translation between Kannada and English</li>
+                            <li>Legal document formatting and generation</li>
+                            <li>Downloadable PDF notices</li>
+                            <li>User-friendly interface for non-technical users</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold">My Role</h4>
+                        <p>Designed and developed the full-stack application, focusing on creating an intuitive user interface and implementing the backend processing pipeline.</p>
+                    </div>
+                `
+            },
+            crop: {
+                title: "AI-Powered Crop Recommendation System",
+                content: `
+                    <div class="space-y-4">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='200' viewBox='0 0 800 200'%3E%3Crect fill='%23a6c8e7' width='800' height='200'/%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Cpath d='M30,100 Q400,150 770,100 L770,200 L30,200 Z'/%3E%3C/g%3E%3Ctext x='50%25' y='40%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%23ffffff'%3ECrop Recommendation%3C/text%3E%3Cg fill='%235a87a8' transform='translate(400, 130)'%3E%3Cpath d='M-20,-30 L0,0 L20,-30 L0,-10 Z'/%3E%3Ccircle cx='0' cy='-40' r='10'/%3E%3Ccircle cx='-30' cy='-30' r='10'/%3E%3Ccircle cx='30' cy='-30' r='10'/%3E%3C/g%3E%3C/svg%3E" alt="Crop Recommendation System" class="w-full h-48 object-cover rounded-lg mb-4">
+                        
+                        <h4 class="text-xl font-semibold">Project Overview</h4>
+                        <p>An intelligent crop recommendation system that helps farmers make data-driven decisions about which crops to plant based on soil conditions and weather data.</p>
+                        
+                        <h4 class="text-xl font-semibold">Technologies Used</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Streamlit</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Machine Learning</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Random Forest</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">KNN</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">SVM</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">PCA</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">OpenWeatherMap API</span>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold">Key Features</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Ensemble machine learning model combining Random Forest, KNN, and SVM</li>
+                            <li>Dimensionality reduction using PCA</li>
+                            <li>Real-time weather data integration</li>
+                            <li>Model performance visualizations</li>
+                            <li>User-friendly interface for farmers</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold">My Role</h4>
+                        <p>Developed the machine learning models, integrated the weather API, and designed the Streamlit interface with a focus on usability for farmers with varying levels of technical expertise.</p>
+                    </div>
+                `
+            },
+            dsa: {
+                title: "DSA Master",
+                content: `
+                    <div class="space-y-4">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='200' viewBox='0 0 800 200'%3E%3Crect fill='%23a6c8e7' width='800' height='200'/%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Crect x='100' y='50' width='600' height='100' rx='10' ry='10'/%3E%3C/g%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%23ffffff'%3EDSA Master%3C/text%3E%3Cg fill='%235a87a8' transform='translate(180, 100)'%3E%3Ctext font-family='monospace' font-size='20' fill='%23ffffff'%3E%7B%7D%3C/text%3E%3C/g%3E%3Cg fill='%235a87a8' transform='translate(620, 100)'%3E%3Ctext font-family='monospace' font-size='20' fill='%23ffffff'%3E%5B%5D%3C/text%3E%3C/g%3E%3C/svg%3E" alt="DSA Master" class="w-full h-48 object-cover rounded-lg mb-4">
+                        
+                        <h4 class="text-xl font-semibold">Project Overview</h4>
+                        <p>DSA Master is an educational platform designed to make learning data structures and algorithms engaging and interactive through gamification and visual learning.</p>
+                        
+                        <h4 class="text-xl font-semibold">Technologies Used</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">React</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">MongoDB</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">JavaScript</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">HTML/CSS</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Netlify</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Jira</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Trello</span>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold">Key Features</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>Interactive visualizations of data structures and algorithms</li>
+                            <li>Gamified learning experience with quizzes and challenges</li>
+                            <li>Progress tracking and achievement system</li>
+                            <li>Community forum for discussion and collaboration</li>
+                            <li>Mobile-responsive design</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold">My Role</h4>
+                        <p>Led a 10-member team in developing the platform, managed project timelines using Trello, conducted user research, and implemented the frontend interface with a focus on engaging visualizations.</p>
+                    </div>
+                `
+            },
+            inclusus: {
+                title: "Inclusus",
+                content: `
+                    <div class="space-y-4">
+                        <img src="data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100%25' height='200' viewBox='0 0 800 200'%3E%3Crect fill='%23a6c8e7' width='800' height='200'/%3E%3Cg fill='%23ffffff' fill-opacity='0.4'%3E%3Ccircle cx='200' cy='100' r='70'/%3E%3Ccircle cx='600' cy='100' r='70'/%3E%3C/g%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='36' font-weight='bold' fill='%23ffffff'%3EInclusus%3C/text%3E%3Cg transform='translate(200, 100)'%3E%3Ctext font-family='Arial' font-size='24' text-anchor='middle' dominant-baseline='middle' fill='%235a87a8'%3E%E2%99%BF%3C/text%3E%3C/g%3E%3Cg transform='translate(600, 100)'%3E%3Ctext font-family='Arial' font-size='24' text-anchor='middle' dominant-baseline='middle' fill='%235a87a8'%3E%F0%9F%A4%9D%3C/text%3E%3C/g%3E%3C/svg%3E" alt="Inclusus" class="w-full h-48 object-cover rounded-lg mb-4">
+                        
+                        <h4 class="text-xl font-semibold">Project Overview</h4>
+                        <p>Inclusus is an accessible job platform designed specifically for individuals with disabilities and those from marginalized communities, helping them find suitable employment opportunities.</p>
+                        
+                        <h4 class="text-xl font-semibold">Technologies Used</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">ARIA Standards</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Text-to-Speech</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">AI</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Responsive Design</span>
+                            <span class="px-3 py-1 bg-[var(--light-color)] text-[var(--accent-color)] rounded-full">Inclusive UX</span>
+                        </div>
+                        
+                        <h4 class="text-xl font-semibold">Key Features</h4>
+                        <ul class="list-disc pl-5 space-y-1">
+                            <li>ARIA-compliant accessible interface</li>
+                            <li>Text-to-speech functionality</li>
+                            <li>AI-powered resume builder</li>
+                            <li>Skill gap analysis tools</li>
+                            <li>Connection to government education and financial aid resources</li>
+                            <li>Job matching algorithm for people with disabilities</li>
+                        </ul>
+                        
+                        <h4 class="text-xl font-semibold">My Role</h4>
+                        <p>Designed the accessible user interface, implemented the text-to-speech functionality, and developed the AI-powered resume builder with a focus on creating an inclusive user experience.</p>
+                    </div>
+                `
+            }
+        };
+        
+        // Initialize ScrollReveal
+        const sr = ScrollReveal({
+            origin: 'bottom',
+            distance: '50px',
+            duration: 1000,
+            delay: 200,
+            easing: 'cubic-bezier(0.5, 0, 0, 1)',
+            reset: false
+        });
+        
+        // Custom cursor
+        const cursor = document.querySelector('.cursor');
+        const cursorFollower = document.querySelector('.cursor-follower');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorFollower.style.left = e.clientX + 'px';
+                cursorFollower.style.top = e.clientY + 'px';
+            }, 100);
+        });
+        
+        document.addEventListener('mousedown', () => {
+            cursor.classList.add('expand');
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.classList.remove('expand');
+        });
+        
+        // Navigation progress bar
+        window.addEventListener('scroll', () => {
+            const windowHeight = window.innerHeight;
+            const fullHeight = document.body.clientHeight;
+            const scrolled = window.scrollY;
+            const progressWidth = (scrolled / (fullHeight - windowHeight)) * 100;
+            
+            document.querySelector('.nav-progress').style.width = progressWidth + '%';
+            
+            // Back to top button visibility
+            if (scrolled > 300) {
+                document.querySelector('.back-to-top').classList.add('visible');
+            } else {
+                document.querySelector('.back-to-top').classList.remove('visible');
+            }
+            
+            // Update active nav link
+            const sections = document.querySelectorAll('.section');
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrolled >= sectionTop && scrolled < sectionTop + sectionHeight) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+        
+        // Back to top button
+        document.querySelector('.back-to-top').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Mobile navigation toggle
+        document.querySelector('.mobile-nav-toggle').addEventListener('click', () => {
+            document.querySelector('.navbar').classList.toggle('active');
+            
+            const icon = document.querySelector('.mobile-nav-toggle i');
+            if (icon.classList.contains('fa-bars')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile nav when clicking a link
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.navbar').classList.remove('active');
+                document.querySelector('.mobile-nav-toggle i').classList.remove('fa-times');
+                document.querySelector('.mobile-nav-toggle i').classList.add('fa-bars');
+            });
+        });
+        
+        // Project modal functions
+        function showProjectDetails(projectId) {
+            const project = projectDetails[projectId];
+            document.getElementById('modalTitle').textContent = project.title;
+            document.getElementById('modalContent').innerHTML = project.content;
+            document.getElementById('projectModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeProjectModal() {
+            document.getElementById('projectModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (name && email && subject && message) {
+                // In a real application, you would send this data to a server
+                alert('Thank you for your message! I will get back to you soon.');
+                this.reset();
+            } else {
+                alert('Please fill in all fields.');
+            }
+        });
+        
+        // Initialize skill bars animation
+        function animateSkillBars() {
+            document.querySelectorAll('.skill-progress').forEach(bar => {
+                const width = bar.getAttribute('data-width');
+                bar.style.width = width;
+            });
+        }
+        
+        // ScrollReveal animations
+        sr.reveal('.section-title', { origin: 'left' });
+        sr.reveal('.card', { interval: 200 });
+        sr.reveal('.timeline-item', { interval: 200 });
+        sr.reveal('.project-card', { interval: 200 });
+        
+        // Page load animations
+        window.addEventListener('load', () => {
+            // Hide loader
+            setTimeout(() => {
+                document.querySelector('.loader-wrapper').classList.add('fade-out');
+            }, 1000);
+            
+            // Animate skill bars after a delay
+            setTimeout(animateSkillBars, 1500);
+        });
+    </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'969428c2f6fa8030',t:'MTc1NDIwNjc0Ni4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
