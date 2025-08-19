@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  postgres:
+    restart: always
+    volumes:
+      - postgres_data_prod:/var/lib/postgresql/data
+
+  backend:
+    restart: always
+    environment:
+      NODE_ENV: production
+    volumes:
+      - ./backend/logs:/app/logs
+
+  frontend:
+    restart: always
+    environment:
+      REACT_APP_API_URL: https://api.yourdomain.com/api
+      REACT_APP_SOCKET_URL: https://api.yourdomain.com
+
+  redis:
+    restart: always
+    volumes:
+      - redis_data_prod:/data
+
+volumes:
+  postgres_data_prod:
+    driver: local
+  redis_data_prod:
+    driver: local
