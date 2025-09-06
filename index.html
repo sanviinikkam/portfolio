@@ -435,7 +435,8 @@
                         <a href="#projects" class="btn border-2 border-[var(--accent-color)] text-[var(--accent-color)]">View Projects</a>
                     </div>
                     <div class="flex space-x-4 mt-8">
-                        <a href="mailto:sanvi.nikkam@gmail.com" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
+                        <a href="https://mail.google.com/mail/?view=cm&to=sanvi.nikkam@gmail.com" 
+                           target="_blank" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
                             <i class="fas fa-envelope text-xl"></i>
                         </a>
                         <a href="https://linkedin.com" target="_blank" class="text-gray-600 hover:text-[var(--accent-color)] transition-colors">
@@ -687,7 +688,7 @@ Years of competitive swimming, dance, and work with U&I and NSS have shaped my d
                         <p class="text-gray-600 mb-4">AI-Powered Business Insight Generator</p>
                         <div class="flex flex-wrap gap-2 mb-4">
                             <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">AI</span>
-                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">PowerBi</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Power BI</span>
                             <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Data analysis</span>
                             <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Business Insights</span>
                         </div>
@@ -707,7 +708,7 @@ Years of competitive swimming, dance, and work with U&I and NSS have shaped my d
                         <h3 class="text-xl font-semibold mb-2">Tata Data Visualization</h3>
                         <p class="text-gray-600 mb-4">Data Visualization Simulation on Forage</p>
                         <div class="flex flex-wrap gap-2 mb-4">
-                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">PowerBi</span>
+                            <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Power BI</span>
                             <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Stakeholder Communication</span>
                             <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Data analysis</span>
                             <span class="px-2 py-1 bg-[var(--light-color)] text-[var(--accent-color)] text-xs rounded-full">Business Insights</span>
@@ -876,7 +877,12 @@ Years of competitive swimming, dance, and work with U&I and NSS have shaped my d
                             </div>
                             <div>
                                 <h3 class="font-medium">Email</h3>
-                                <a href="mailto:sanvi.nikkam@gmail.com" class="text-[var(--accent-color)] hover:underline">sanvi.nikkam@gmail.com</a>
+                                <a href="https://mail.google.com/mail/?view=cm&to=sanvi.nikkam@gmail.com" 
+                                    target="_blank" 
+                                    class="text-[var(--accent-color)] hover:underline">
+                                    sanvi.nikkam@gmail.com
+                                </a>
+
                             </div>
                         </div>
                         
@@ -947,11 +953,11 @@ Years of competitive swimming, dance, and work with U&I and NSS have shaped my d
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <div class="mb-6 md:mb-0">
                     <h2 class="text-2xl font-bold mb-2">Sanvi S Nikkam</h2>
-                    <p class="text-gray-300">Product Designer & UI/UX Specialist</p>
+                    <p class="text-gray-300">Software Engineer</p>
                 </div>
                 
                 <div class="flex space-x-4">
-                    <a href="mailto:sanvi.nikkam@gmail.com" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
+                    <a href="https://mail.google.com/mail/?view=cm&to=sanvi.nikkam@gmail.com"  target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
                         <i class="fas fa-envelope"></i>
                     </a>
                     <a href="https://linkedin.com" target="_blank" class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-[var(--accent-color)] transition-colors">
@@ -1242,6 +1248,25 @@ Years of competitive swimming, dance, and work with U&I and NSS have shaped my d
         
         setTimeout(typeEffect, 1000);
         
+
+        // Contact form to open Gmail compose
+        document.getElementById("contactForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // stop default form submission
+            
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
+            
+            // Gmail compose link
+            const gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=sanvi.nikkam@gmail.com&su=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+            
+            window.open(gmailLink, "_blank"); // opens Gmail in new tab
+        });
+
+
+
+
 
         // Project modal functions
         function showProjectDetails(projectId) {
